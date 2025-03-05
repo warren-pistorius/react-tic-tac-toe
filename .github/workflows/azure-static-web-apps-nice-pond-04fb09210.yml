@@ -1,4 +1,5 @@
-name: Azure Static Web Apps CI/CD
+# name: Azure Static Web Apps CI/CD
+name: React TIC-TAC-TOE CI/CD
 
 on:
   push:
