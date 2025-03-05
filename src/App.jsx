@@ -23,7 +23,19 @@ function derivedActivePlayer(gameTurns) {
   return currentPlayer;
 }
 
+function handlePlayerNameChange(symbol, newName) {
+  setPlayers((previousPlayers) => {
+    return {
+      ...previousPlayers,
+      //NOTE: This syntax to set symbol
+      [symbol]: newName,
+    };
+  });
+}
+
 function App() {
+  const [players, setPlayers] = [{ X: "Player 1", Y: "Player 2" }];
+
   const [gameTurns, setGameTurns] = useState([]);
   const currentPlayer = derivedActivePlayer(gameTurns);
 
@@ -53,7 +65,7 @@ function App() {
       firstSquareSymbol == thirdSquareSymbol
     ) {
       console.log("WINNER!!!");
-      winner = firstSquareSymbol;
+      winner = players[firstSquareSymbol];
     }
   }
 
@@ -95,12 +107,14 @@ function App() {
             symbol="X"
             initialName="Player 1"
             isActivePlayer={currentPlayer === "X"}
+            onChangeName={handlePlayerNameChange}
           />
           <Player
             name="Player 2"
             symbol="O"
             initialName="Player 2"
             isActivePlayer={currentPlayer === "O"}
+            onChangeName={handlePlayerNameChange}
           />
         </ol>
         {(winner || hasDraw) && <GameOver winner={winner} rematch={rematch} />}
