@@ -23,18 +23,8 @@ function derivedActivePlayer(gameTurns) {
   return currentPlayer;
 }
 
-function handlePlayerNameChange(symbol, newName) {
-  setPlayers((previousPlayers) => {
-    return {
-      ...previousPlayers,
-      //NOTE: This syntax to set symbol
-      [symbol]: newName,
-    };
-  });
-}
-
 function App() {
-  const [players, setPlayers] = [{ X: "Player 1", Y: "Player 2" }];
+  const [players, setPlayers] = useState({ X: "Player 1", Y: "Player 2" });
 
   const [gameTurns, setGameTurns] = useState([]);
   const currentPlayer = derivedActivePlayer(gameTurns);
@@ -96,6 +86,16 @@ function App() {
   function rematch() {
     setGameTurns([]);
     console.log("Rematch");
+  }
+
+  function handlePlayerNameChange(symbol, newName) {
+    setPlayers((previousPlayers) => {
+      return {
+        ...previousPlayers,
+        //NOTE: This syntax to set symbol
+        [symbol]: newName,
+      };
+    });
   }
 
   return (
