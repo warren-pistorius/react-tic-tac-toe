@@ -349,3 +349,10 @@ ol {
     transform: scale(1);
   }
 }
+
+.url {
+  color: #23221f;
+  text-align: center;
+  font-weight: bold;
+  
+}
