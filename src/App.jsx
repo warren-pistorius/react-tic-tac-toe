@@ -24,7 +24,7 @@ function derivedActivePlayer(gameTurns) {
 }
 
 function App() {
-  const [players, setPlayers] = useState({ X: "Player 1", Y: "Player 2" });
+  const [players, setPlayers] = useState({ X: "Player 1", O: "Player 2" });
 
   const [gameTurns, setGameTurns] = useState([]);
   const currentPlayer = derivedActivePlayer(gameTurns);
@@ -52,10 +52,13 @@ function App() {
     if (
       firstSquareSymbol &&
       firstSquareSymbol === secondSquareSymbol &&
-      firstSquareSymbol == thirdSquareSymbol
+      firstSquareSymbol === thirdSquareSymbol
     ) {
       console.log("WINNER!!!");
       winner = players[firstSquareSymbol];
+      console.log(winner);
+      console.log(firstSquareSymbol);
+      console.log(players);
     }
   }
 
